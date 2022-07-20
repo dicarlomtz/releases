@@ -1,9 +1,15 @@
-const text_numbers_regex = /[\d\.]+|\D+/g;
+import fs from "fs"
 
-function loadJson(file_path) {
-    return require(file_path);
+export const text_numbers_regex = /[\d\.]+|\D+/g;
+
+export function loadJSON(filePath) {
+
+    const data = fs.readFileSync(filePath);
+    return JSON.parse(data);
+
 }
 
-function getHigher(firstNumber, secondNumber) {
-    return (firstNumber >= secondNumber) ? firstNumber : secondNumber;
+export function getHigher(firstNumber, secondNumber) {
+    if (!firstNumber) return secondNumber;
+    return (parseInt(firstNumber) >= parseInt(secondNumber)) ? firstNumber : secondNumber;
 }
