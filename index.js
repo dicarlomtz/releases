@@ -1,5 +1,3 @@
-import Repository from "./src/models/repository.js";
+import analyze from "./src/views/cli.js";
 
-const rep = new Repository();
-
-rep.showRepositoryReleases();
+analyze();
