@@ -58,7 +58,10 @@ export default class Repository {
 
     #obtainReleases(lastR, lastRC) {
         const release = lastR ? lastR : null;
-        const releaseCandidate = (lastRC && parseInt(lastR) + 1 === parseInt(lastRC)) ? lastRC : null;
+
+        const rcChecker = lastRC ? parseInt(lastRC) - parseInt(lastR) : -1; // if 1 || 0 there is a rc
+        const releaseCandidate = (rcChecker === 0 || rcChecker === 1) ? lastRC : null;
+
         this["#releases"] = new Releases(release, releaseCandidate);
     }
 }
